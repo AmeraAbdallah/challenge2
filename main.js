@@ -45,14 +45,29 @@ Create two computers object from your factory function and save them in one arra
 Note: please write one or two lines here describing your solution.
 */
 
+/**
+ * returned an object, assigned keys for it and the values are the parameters values
+ * and then declared an array and pushed to it two objects
+ */
 function makeComputer(type, color, weight) {
-  // TODO: Your code here
+  return {
+    type: type,
+    color: color,
+    weight: weight
+  };
 }
 
-// Write a function displayComputer that can be used to display one computer.
+var computers = [];
+computers.push(makeComputer('dell', 'white', '0.5kg'));
+computers.push(makeComputer('hp', 'white', '0.6kg'));
 
+// Write a function displayComputer that can be used to display one computer.
+/**
+ * displayComputer function takes an computer object as a parameter and 
+ * return one line string contains all computer information
+ */
 function displayComputer(computer) {
-  // TODO: Your code here
+  return `type: ${computer.type}, color: ${computer.color}, weight: ${computer.weight}.`;
 }
 
 //=============================================================================
@@ -71,9 +86,15 @@ Note: please write one or two lines here describing your solution.
 var strArr = ['hello', 'world', 'whirled', 'peas'];
 uppercaseAll(strArr); ==> [ 'HELLO', 'WORLD', 'WHIRLED', 'PEAS' ]
 */
+/**
+ * I used map because the input is array and the output is array
+ * so I passed arrayOfStrings in map and changed each element to element.toUpperCase()
+ */
 
 function uppercaseAll(arrayOfStrings) {
-  // TODO: your code here
+  return map(arrayOfStrings, function(element){
+    return element.toUpperCase();
+  });
 }
 
 //=============================================================================
@@ -91,6 +112,11 @@ Note: please write one or two lines here describing your solution.
 
 Here’s the data you’ll work with:
 */
+
+/**
+ * I used filter because we need a condition, so we do not want to return all the
+ * array elements. I passed arrayOfObjects in filter parameter and returned the condition
+ */
 
 var data = [
   {
@@ -112,7 +138,9 @@ var data = [
 ];
 
 function highestPopulation(arrayOfObjects) {
-  // TODO: your code here
+  return filter(arrayOfObjects, function(element, i){
+    return element.population > 500000000;
+  });
 }
 
 //=============================================================================
@@ -131,8 +159,16 @@ halveAll(numsArray); ==> [ 1, 3, 10, 4, 7 ]
 Note: please write one or two lines here describing your solution.
 */
 
+/**
+ * I decided to use map because we need to iterate over all the array and change
+ * all the array elements and return an array, so I passed numbers inside map parameter and 
+ * returned element / 2 and then returnde the map result which is an array
+ */
+
 function halveAll(numbers) {
-  // your code is here
+  return map(numbers, function(element){
+    return element / 2;
+  });
 }
 
 //=============================================================================
@@ -147,8 +183,19 @@ values({first : 5, second: 'something' , third : 129}) ==> [5, 'something', 129]
 
 Note: please write one or two lines here describing your solution.
 */
+
+/**
+ * I decided to go with each because the input is object and returned value is array
+ * I guess in this case it simpler to use each.
+ * so I iterated over obj and in every iteration push the object value in an array and 
+ * then returned the array
+ */
 function values(obj) {
-  // TODO: your code here
+  var acc = [];
+  each(obj, function(val){
+    acc.push(val);
+  });
+  return acc;
 }
 
 //Good Luck :))
